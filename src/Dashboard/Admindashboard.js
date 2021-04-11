@@ -1,28 +1,29 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import history from '../history'
 import {Table} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
+import history from '../history'
 
-export default function Dashboard() {  
- const [data1, setData]=useState([])
- async function tss(){
-  return await getEmpData()
-}
- const getEmpData=()=>{
-  return fetch('https://employeeBackend.nandhagopalmadd.repl.co/Getdata', {
-    method: 'GET',   
-  }).then(res => res.json()).then(json=>{console.log("JSON: ");console.log(json);setData(json)})
-}
-useEffect(()=>{
-  tss()
-  //console.log(data1)
-},[])
+export default function Admindashboard() {  
+ const [data, setData]=useState([])
+ useEffect(()=>{
+  const getEmpData= async ()=>{
+    
+    var res=await axios.get('https://employeeBackend.nandhagopalmadd.repl.co/Getdata')
+    setData(res.data)    
+    // console.log(res.data)
+    // console.log(data)
+  };
+getEmpData()
+  
+ },[data])
   return(
     
     <div>
-      <h2>Dashboard</h2>     
+      <h2>AdminDashboard</h2>     
+      <div className="btn btn-success" onClick={goToAddEmp}>Add Employee</div>
     
-         <div className='container'>
+          <div className='container'>
           
           <Table striped bordered hover size='md'>
                 <thead>
@@ -36,7 +37,7 @@ useEffect(()=>{
                 </thead> 
                 <tbody> 
                 {
-                  data1.map((item,index)=>{
+                  data.map((item,index)=>{
                     return(
                       
                         <tr key={item.EmpId}>
@@ -54,10 +55,13 @@ useEffect(()=>{
               </Table>
           
           </div>        
-          
      
     </div>
     
   );
  
+}
+function goToAddEmp(){
+  history.push('/AddEmployee')
+  window.location.reload()
 }
