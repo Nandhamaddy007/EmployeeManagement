@@ -58,6 +58,10 @@ useEffect(()=>{
             <td>Employee Certifications</td>
             <td>{data.EmployeeCerts}</td>
           </tr>
+          <tr>
+            <td>Employee Qualification</td>
+            <td>{data.EmpQualification}</td>
+          </tr>
           </table>
           <div className='btn btn-primary float-right' onClick={()=>window.history.back()}>Go back</div>
         </div>
