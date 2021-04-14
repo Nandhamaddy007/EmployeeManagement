@@ -22,8 +22,8 @@ export default function Login() {
     e.preventDefault();        
     if(username.length>0 && password.length>0){
       const token = await loginUser({
-      user:username,
-      pass:password
+      User:username,
+      Pass:password
     });
     if(token.data.code!=='bad'){
       setToken(token.data.token); 

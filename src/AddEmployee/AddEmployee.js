@@ -5,15 +5,18 @@ import './AddEmployee.css'
 import useToken from '../useToken'
 
 
-function handleSubmit(state){
-  var temp="EMP"+state.EmpId
-  var dq=state.EmployeeCerts.split(',')
-  setState({...state,{Pass:temp,EmployeeDQ:dq*10}})
-  console.log(state)
-}
+
 
 export default function AddEmployee() {
   var token= sessionStorage.getItem('token')
+  function handleSubmit(state){
+  var temp="EMP"+state.EmpId
+  var dq=state.EmployeeCerts.split(',').length
+  setState({...state,Pass:temp,EmployeeDQ:(dq*10)},()=>{
+    axios.post('https://employeeBackend.nandhagopalmadd.repl.co/AddEmployee', {
+    body:JSON.stringify(state)
+  })
+  })
   const [state,setState]=useState({
     EmpId:"",
     EmpName:"",
