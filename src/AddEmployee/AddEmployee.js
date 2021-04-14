@@ -115,7 +115,7 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       <br/>
       {state.EmpQualification?.length<=0?<div className='offset-md-4 col-md-4 text-danger'>Employee Qualification cannot be empty</div>:null}
       </div>
-      <div className='form-group'>
+      <div className='form-group row'>
        <div className="switch-container">
                 <label>
                     <input className="switch" type="checkbox" onChange={e=>{                                      
