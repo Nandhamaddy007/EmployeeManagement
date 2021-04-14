@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState }  from 'react';
 import axios from 'axios';
+import './AddEmployee.css'
 import useToken from '../useToken'
 
 
@@ -31,19 +32,15 @@ export default function AddEmployee() {
 axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res)=>{
     //console.log(res.data)
     let t=res.data.last+1
-    var temp=state  
-        temp.EmpId=t
-        setState(temp)
+   setState({...state,EmpId:t})
 })
 
 }
   function generateMail(){
     let id=state.EmpName.replace(' ','')
     id=id.length>10?id.slice(0,10):id
-    let m=id+'.'+id[0]+'@EmpMgmt.com'
-    var temp=state  
-        temp.EmpMail=m       
-        setState(temp)
+    let m=id+'.'+id[0]+'@EmpMgmt.com'     
+    setState({...state,EmpMail:m})
   
 }
   
@@ -61,10 +58,8 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       </div>
       <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Name</p>
-        <input className={state.EmpName?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{
-        var temp=state  
-        temp.EmpName=e.target.value        
-        setState(temp)
+        <input className={state.EmpName?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{        
+        setState({...state,EmpName:e.target.value})
         
         }
         }
@@ -81,10 +76,8 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
 
       <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Designation</p>
-        <input className={state.EmpDesignation?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{        
-        var temp=state  
-        temp.EmpDesignation=e.target.value        
-        setState(temp)
+        <input className={state.EmpDesignation?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{                        
+        setState({...state,EmpDesignation:e.target.value})
         }
         }
         />
@@ -93,10 +86,8 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       </div>
       <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Contact No</p>
-        <input className={state.EmpContactNumber?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{          
-        var temp=state  
-        temp.EmpContactNumber=e.target.value        
-        setState(temp)
+        <input className={state.EmpContactNumber?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{                  
+        setState({...state,EmpContactNumber:e.target.value})
         }
         }
         />
@@ -106,9 +97,7 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Certifications</p>
         <input className={state.EmployeeCerts?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" placeholder='ex:Angular,Nodejs,MongoDB' onChange={e=>{  
-        var temp=state  
-        temp.EmployeeCerts=e.target.value        
-        setState(temp)        
+       setState({...state,EmployeeCerts:e.target.value})      
         }
         }
         />
@@ -117,11 +106,34 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       {state.EmployeeCerts?.length<=0?<div className='offset-md-4 col-md-4 text-danger'>Employee Contact cannot be empty</div>:null}
       </div>
       <div className='form-group row'>
+        <p className='col-md-2 offset-md-2'>Qualification</p>
+        <input className={state.EmpQualification?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="text" onChange={e=>{                  
+        setState({...state,EmpQualification:e.target.value})
+        }
+        }
+        />
+      <br/>
+      {state.EmpQualification?.length<=0?<div className='offset-md-4 col-md-4 text-danger'>Employee Qualification cannot be empty</div>:null}
+      </div>
+      <div className='form-group'>
+       <div className="switch-container">
+                <label>
+                    <input className="switch" type="checkbox" onChange={e=>{                                      
+        setState({...state,EmployeeCab:!state.EmployeeCab})
+        console.log(state.EmployeeCab) 
+        }
+        }/>
+                    <div>
+              
+                        <div></div>
+                    </div>
+                </label>
+            </div>
+      </div>
+      <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Address</p>
-        <textarea className={state.EmpAddress?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"}  onChange={e=>{         
-        var temp=state  
-        temp.EmpAddress=e.target.value        
-        setState(temp)
+        <textarea className={state.EmpAddress?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} onChange={e=>{         
+        setState({...state,EmpAddress:e.target.value})
         }
         }
         ></textarea>
