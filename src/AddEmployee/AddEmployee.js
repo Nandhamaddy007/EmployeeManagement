@@ -115,8 +115,9 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       <br/>
       {state.EmpQualification?.length<=0?<div className='offset-md-4 col-md-4 text-danger'>Employee Qualification cannot be empty</div>:null}
       </div>
-      <div className='form-group row'>
+      <div className='row form-group special'>
        <div className="switch-container">
+        <p className='cab-label'>Cab</p>
                 <label>
                     <input className="switch" type="checkbox" onChange={e=>{                                      
         setState({...state,EmployeeCab:!state.EmployeeCab})
@@ -130,6 +131,9 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
                 </label>
             </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
       <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Address</p>
         <textarea className={state.EmpAddress?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} onChange={e=>{         

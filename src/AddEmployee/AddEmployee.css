@@ -92,3 +92,13 @@ textarea{
   position:absolute;
   top:100%;
 }
+special{
+  position:absolute;
+  top:85%;
+  left:40%;
+}
+cab-label{
+  position:absolute;
+  right:150px;
+  bottom:-21px
+}
