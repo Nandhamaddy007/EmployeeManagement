@@ -1,0 +1,19 @@
+// <div className='row form-group special' style="position:absolute;top:85%;left:40%;">
+      //  <div className="switch-container">
+      //   <p className='cab-label' style="position:absolute;right:150px;bottom:-21px">Cab</p>
+      //           <label>
+      //               <input className="switch" type="checkbox" onChange={e=>{       
+      //   setState({...state,EmployeeCab:!state.EmployeeCab})
+      //   console.log(state.EmployeeCab) 
+      //   }
+      //   }/>
+      //               <div>
+              
+      //                   <div></div>
+      //               </div>
+      //           </label>
+      //       </div>
+      // </div>
+      // <br/>
+      // <br/>
+      // <br/> 

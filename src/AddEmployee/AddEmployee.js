@@ -6,7 +6,10 @@ import useToken from '../useToken'
 
 
 function handleSubmit(state){
-console.log(state)
+  var temp="EMP"+state.EmpId
+  var dq=state.EmployeeCerts.split(',')
+  setState({...state,{Pass:temp,EmployeeDQ:dq*10}})
+  console.log(state)
 }
 
 export default function AddEmployee() {
@@ -18,12 +21,13 @@ export default function AddEmployee() {
     EmpMail:"",
     EmpContactNumber:"",
     EmpAddress:"",
-    EmployeeCab:"",
+    EmployeeCab:false,
     EmpQualification:"", 
     EmployeeDQ:"",
+    EmpDOB:'',
     EmployeeCerts:"",
-    user:"",
-    pass:""
+    User:"",
+    Pass:""
   })
   useEffect(()=>{
     getLastId()
@@ -40,7 +44,8 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
     let id=state.EmpName.replace(' ','')
     id=id.length>10?id.slice(0,10):id
     let m=id+'.'+id[0]+'@EmpMgmt.com'     
-    setState({...state,EmpMail:m})
+    setState({...state,User:m.split('@')[0],EmpMail:m})
+    console.log(state)
   
 }
   
@@ -72,6 +77,16 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
         <input className="form-control col-md-5" type="text" disabled value={state.EmpMail}/>
       <br/>
       {state.EmpName?.length>3?<div onClick={generateMail} className='offset-sm-1 btn btn-primary'>Generate MailID</div>:null}
+      </div>
+    <div className='form-group row'>
+        <p className='col-md-2 offset-md-2'>DOB</p>
+        <input className={state.EmpDOB?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} type="date" onChange={e=>{                  
+        setState({...state,EmpDOB:new Date(e.target.value)})
+        }
+        }
+        />
+      <br/>
+      {state.EmpDOB?.length<=0?<div className='offset-md-4 col-md-4 text-danger'>Employee Qualification cannot be empty</div>:null}
       </div>
 
       <div className='form-group row'>
@@ -115,25 +130,7 @@ axios.get('https://employeeBackend.nandhagopalmadd.repl.co/GetLastId').then((res
       <br/>
       {state.EmpQualification?.length<=0?<div className='offset-md-4 col-md-4 text-danger'>Employee Qualification cannot be empty</div>:null}
       </div>
-      <div className='row form-group special'>
-       <div className="switch-container">
-        <p className='cab-label'>Cab</p>
-                <label>
-                    <input className="switch" type="checkbox" onChange={e=>{                                      
-        setState({...state,EmployeeCab:!state.EmployeeCab})
-        console.log(state.EmployeeCab) 
-        }
-        }/>
-                    <div>
-              
-                        <div></div>
-                    </div>
-                </label>
-            </div>
-      </div>
-      <br/>
-      <br/>
-      <br/>
+            
       <div className='form-group row'>
         <p className='col-md-2 offset-md-2'>Address</p>
         <textarea className={state.EmpAddress?.length<=0?"form-control is-invalid col-md-5":"form-control col-md-5"} onChange={e=>{         
