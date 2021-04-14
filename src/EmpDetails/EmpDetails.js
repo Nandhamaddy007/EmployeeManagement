@@ -12,9 +12,7 @@ export default function EmpDetails() {
     axios
       .get("https://employeeBackend.nandhagopalmadd.repl.co/Getdata/" + id.id)
       .then((res) => {
-        d = new Date(res.data.EmpDOB).toLocaleDateString();
         //console.log(d);
-        res.data.EmpDOB = d;
         setData(res.data);
       });
   }, []);

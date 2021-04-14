@@ -10,27 +10,15 @@ export default function AddEmployee() {
   function handleSubmit(states) {
     var temp = "EMP" + state.EmpId;
     var dq = state.EmployeeCerts.split(",").length;
+    console.log(state);
     setState({ ...state, Pass: temp, EmployeeDQ: dq * 10 });
     axios
       .post("https://employeeBackend.nandhagopalmadd.repl.co/AddEmployee", {
         body: JSON.stringify(state)
       })
-      .then((data) => (msg = data));
-    setState({
-      EmpId: "",
-      EmpName: "",
-      EmpDesignation: "",
-      EmpMail: "",
-      EmpContactNumber: "",
-      EmpAddress: "",
-      EmployeeCab: false,
-      EmpQualification: "",
-      EmployeeDQ: "",
-      EmpDOB: "",
-      EmployeeCerts: "",
-      User: "",
-      Pass: ""
-    });
+      .then((data) => {
+        msg = data;
+      });
   }
   const [state, setState] = useState({
     EmpId: "",
@@ -131,13 +119,16 @@ export default function AddEmployee() {
               }
               type="date"
               onChange={(e) => {
-                setState({ ...state, EmpDOB: new Date(e.target.value) });
+                setState({
+                  ...state,
+                  EmpDOB: new Date(e.target.value).toLocaleDateString()
+                });
               }}
             />
             <br />
             {state.EmpDOB?.length <= 0 ? (
               <div className="offset-md-4 col-md-4 text-danger">
-                Employee Qualification cannot be empty
+                Employee DOB cannot be empty
               </div>
             ) : null}
           </div>
