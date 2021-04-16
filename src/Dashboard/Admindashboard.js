@@ -19,7 +19,7 @@ export default function Admindashboard() {
   }, [data]);
   function handleDelete(id) {
     console.log(id);
-    let s = confirm("Are you sure you want to delete" + id);
+    let s = window.confirm("Are you sure you want to delete" + id);
     console.log(s);
     if (s)
       axios
