@@ -25,7 +25,7 @@ export default function Login() {
         Pass: password
       });
       if (token.data.code !== "bad") {
-        console.log(token);
+        //console.log(token);
         setToken(token.data.token);
         if (token.data.token === "Employee") {
           history.push("/EmployeeDashboard");

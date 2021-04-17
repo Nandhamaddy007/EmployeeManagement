@@ -10,7 +10,7 @@ export default function AddEmployee() {
   function handleSubmit() {
     // var dq = state.EmployeeCerts.split(",").length;
     // setState({ ...state, EmployeeDQ: dq * 10 });
-    console.log(state);
+    //console.log(state);
     axios
       .post("https://employeeBackend.nandhagopalmadd.repl.co/AddEmployee", {
         body: JSON.stringify(state)

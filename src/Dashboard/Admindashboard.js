@@ -18,15 +18,15 @@ export default function Admindashboard() {
     getEmpData();
   }, [data]);
   function handleDelete(id) {
-    console.log(id);
+    //console.log(id);
     let s = window.confirm("Are you sure you want to delete" + id);
-    console.log(s);
+    //console.log(s);
     if (s)
       axios
         .delete(
           "https://employeeBackend.nandhagopalmadd.repl.co/DeleteEmployee/" + id
         )
-        .then((data) => console.log(data));
+        .then((data) => window.alert(data));
   }
   return (
     <div>
