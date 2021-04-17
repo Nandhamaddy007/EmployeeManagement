@@ -1,5 +1,5 @@
 //import React, { useEffect }  from 'react';
-import { BrowserRouter, Redirect, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import EmployeeDashboard from "./Dashboard/dashboard";
 import Admindashboard from "./Dashboard/Admindashboard";

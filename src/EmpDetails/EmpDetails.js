@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./EmpDetails.css";
-import { useParams, Link } from "react-router";
+import { useParams } from "react-router";
 
 export default function EmpDetails() {
   const [data, setData] = useState([]);
