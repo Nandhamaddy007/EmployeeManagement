@@ -19,6 +19,7 @@ export default function AddEmployee() {
         msg = data;
         window.alert("Employee " + state.User + " Added successfully...");
       });
+    window.history.back();
   }
   const [state, setState] = useState({
     EmpId: "",
