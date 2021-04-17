@@ -2,22 +2,22 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AddEmployee.css";
-import useToken from "../useToken";
+//import useToken from "../useToken";
 
 export default function AddEmployee() {
   var token = sessionStorage.getItem("token");
   var msg;
-  function handleSubmit(states) {
-    var temp = "EMP" + state.EmpId;
-    var dq = state.EmployeeCerts.split(",").length;
+  function handleSubmit() {
+    // var dq = state.EmployeeCerts.split(",").length;
+    // setState({ ...state, EmployeeDQ: dq * 10 });
     console.log(state);
-    setState({ ...state, Pass: temp, EmployeeDQ: dq * 10 });
     axios
       .post("https://employeeBackend.nandhagopalmadd.repl.co/AddEmployee", {
         body: JSON.stringify(state)
       })
       .then((data) => {
         msg = data;
+        window.alert("Employee " + state.User + " Added successfully...");
       });
   }
   const [state, setState] = useState({
@@ -35,7 +35,6 @@ export default function AddEmployee() {
     User: "",
     Pass: ""
   });
-  var ins = state;
   useEffect(() => {
     getLastId();
   }, []);
@@ -45,7 +44,7 @@ export default function AddEmployee() {
       .then((res) => {
         //console.log(res.data)
         let t = res.data.last + 1;
-        setState({ ...state, EmpId: t });
+        setState({ ...state, EmpId: t, Pass: "EMP" + t });
       });
   }
   function generateMail() {
@@ -184,7 +183,12 @@ export default function AddEmployee() {
               type="text"
               placeholder="ex:Angular,Nodejs,MongoDB"
               onChange={(e) => {
-                setState({ ...state, EmployeeCerts: e.target.value });
+                var dq = e.target.value.split(",").length;
+                setState({
+                  ...state,
+                  EmployeeCerts: e.target.value,
+                  EmployeeDQ: dq * 10
+                });
               }}
             />
             <br />
@@ -237,10 +241,7 @@ export default function AddEmployee() {
           </div>
         </form>
         <p className="text-success">{msg}</p>
-        <div
-          class="btn btn-primary offset-sm-2"
-          onClick={() => handleSubmit(state)}
-        >
+        <div class="btn btn-primary offset-sm-2" onClick={handleSubmit}>
           Submit
         </div>
         <div

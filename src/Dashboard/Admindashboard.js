@@ -66,12 +66,12 @@ export default function Admindashboard() {
                   </td>
                   <td>
                     {item.EmpId !== 10001 ? (
-                      <Link
+                      <div
                         className="btn btn-danger"
                         onClick={() => handleDelete(item.EmpId)}
                       >
                         Delete
-                      </Link>
+                      </div>
                     ) : null}
                   </td>
                 </tr>
