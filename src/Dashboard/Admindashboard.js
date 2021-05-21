@@ -1,15 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import history from "../history";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import history from '../history';
 
 export default function Admindashboard() {
   const [data, setData] = useState([]);
-  let sand = "https://xecrs.sse.codesandbox.io";
+  let sand = 'https://xecrs.sse.codesandbox.io';
   useEffect(() => {
     const getEmpData = async () => {
-      var res = await axios.get(sand + "/Getdata");
+      var res = await axios.get(sand + '/Getdata');
       setData(res.data);
       // console.log(res.data)
       // console.log(data)
@@ -18,14 +18,14 @@ export default function Admindashboard() {
   }, [data]);
   function handleDelete(id) {
     //console.log(id);
-    let s = window.confirm("Are you sure you want to delete" + id);
+    let s = window.confirm('Are you sure you want to delete' + id);
     //console.log(s);
     if (s)
       axios
         .delete(
-          "https://employeeBackend.nandhagopalmadd.repl.co/DeleteEmployee/" + id
+          'https://employeeBackend.nandhagopalmadd.repl.co/DeleteEmployee/' + id
         )
-        .then((data) => window.alert(data));
+        .then(data => window.alert(data.data));
   }
   return (
     <div>
@@ -55,10 +55,10 @@ export default function Admindashboard() {
                   <td> {item.EmpDesignation} </td>
                   <td> {item.EmployeeDQ} </td>
                   <td>
-                    {" "}
+                    {' '}
                     <Link
                       className="btn btn-success"
-                      to={"/EmpDetails/" + item.EmpId}
+                      to={'/EmpDetails/' + item.EmpId}
                     >
                       View
                     </Link>
@@ -83,6 +83,6 @@ export default function Admindashboard() {
   );
 }
 function goToAddEmp() {
-  history.push("/AddEmployee");
+  history.push('/AddEmployee');
   window.location.reload();
 }

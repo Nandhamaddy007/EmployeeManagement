@@ -63,7 +63,7 @@ export default function AddEmployee() {
         <h2>Add Employees</h2>
         <form>
           <div className="form-group row">
-            <p className="col-md-2" for="EmpId">
+            <p className="col-md-2">
               Employee ID
             </p>
             <input
@@ -105,10 +105,7 @@ export default function AddEmployee() {
             />
             <br />
             {state.EmpName?.length > 3 ? (
-              <div
-                onClick={generateMail}
-                className=" btn btn-primary"
-              >
+              <div onClick={generateMail} className=" btn btn-primary">
                 Generate MailID
               </div>
             ) : null}
