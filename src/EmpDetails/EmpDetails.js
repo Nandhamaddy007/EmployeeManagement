@@ -6,14 +6,13 @@ import { useParams } from "react-router";
 export default function EmpDetails() {
   const [data, setData] = useState([]);
   var id = useParams();
+  let sand = "https://xecrs.sse.codesandbox.io";
   useEffect(() => {
     //console.log(id);
-    axios
-      .get("https://employeeBackend.nandhagopalmadd.repl.co/Getdata/" + id.id)
-      .then((res) => {
-        //console.log(d);
-        setData(res.data);
-      });
+    axios.get(sand + "/Getdata/" + id.id).then((res) => {
+      //console.log(d);
+      setData(res.data);
+    });
   }, []);
   //console.log(data.EmpName)
   return (

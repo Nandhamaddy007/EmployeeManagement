@@ -7,12 +7,13 @@ import "./AddEmployee.css";
 export default function AddEmployee() {
   var token = sessionStorage.getItem("token");
   var msg;
+  let sand = "https://xecrs.sse.codesandbox.io";
   function handleSubmit() {
     // var dq = state.EmployeeCerts.split(",").length;
     // setState({ ...state, EmployeeDQ: dq * 10 });
     //console.log(state);
     axios
-      .post("https://employeeBackend.nandhagopalmadd.repl.co/AddEmployee", {
+      .post(sand + "/AddEmployee", {
         body: JSON.stringify(state)
       })
       .then((data) => {

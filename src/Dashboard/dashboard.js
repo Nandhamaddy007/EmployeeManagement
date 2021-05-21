@@ -8,8 +8,9 @@ export default function Dashboard() {
   async function tss() {
     return await getEmpData();
   }
+  let sand = "https://xecrs.sse.codesandbox.io";
   const getEmpData = () => {
-    return fetch("https://employeeBackend.nandhagopalmadd.repl.co/Getdata", {
+    return fetch(sand + "/Getdata", {
       method: "GET"
     })
       .then((res) => res.json())

@@ -6,11 +6,10 @@ import history from "../history";
 
 export default function Admindashboard() {
   const [data, setData] = useState([]);
+  let sand = "https://xecrs.sse.codesandbox.io";
   useEffect(() => {
     const getEmpData = async () => {
-      var res = await axios.get(
-        "https://employeeBackend.nandhagopalmadd.repl.co/Getdata"
-      );
+      var res = await axios.get(sand + "/Getdata");
       setData(res.data);
       // console.log(res.data)
       // console.log(data)
