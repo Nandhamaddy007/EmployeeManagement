@@ -63,9 +63,7 @@ export default function AddEmployee() {
         <h2>Add Employees</h2>
         <form>
           <div className="form-group row">
-            <p className="col-md-2">
-              Employee ID
-            </p>
+            <p className="col-md-2">Employee ID</p>
             <input
               className="form-control col-md-5"
               type="text"
