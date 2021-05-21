@@ -1,20 +1,20 @@
-//import React, { useEffect }  from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-import EmployeeDashboard from "./Dashboard/dashboard";
-import Admindashboard from "./Dashboard/Admindashboard";
-import EmpDetails from "./EmpDetails/EmpDetails";
-import history from "./history";
-import AddEmployee from "./AddEmployee/AddEmployee";
-import Login from "./Login/Login";
+import EmployeeDashboard from './Dashboard/dashboard';
+import Admindashboard from './Dashboard/Admindashboard';
+import EmpDetails from './EmpDetails/EmpDetails';
+import history from './history';
+import AddEmployee from './AddEmployee/AddEmployee';
+import Login from './Login/Login';
 //import useToken from "./useToken";
-import "./App.css";
+import './App.css';
 
 function App() {
   //var logoutTimer=setTimeout(()=> { sessionStorage.clear(); }, 20000);
 
-  var tk = sessionStorage.getItem("token");
-  var username = sessionStorage.getItem("username");
+  var tk = sessionStorage.getItem('token');
+  var username = sessionStorage.getItem('username');
 
   return (
     <div className="wrapper">
@@ -88,11 +88,11 @@ var LogOut = function Logout() {
   );
 };
 function clearLog() {
-  console.log("log out clicked...");
-  var s = window.confirm("Are you sure?");
+  console.log('log out clicked...');
+  var s = window.confirm('Are you sure?');
   if (s) {
     sessionStorage.clear();
-    history.push("/Login");
+    history.push('/Login');
     window.location.reload();
   }
 }
