@@ -44,6 +44,11 @@ export default function Login() {
   return (
     <div className="container">
       <h1>Login</h1>
+      <div className="btn btn-outline-secondary text-left">
+      <h3>sample login detail</h3>
+      <h4>username:Employee1003</h4>
+      <h4>password:Mypass03</h4>
+      </div>
       <div className="row justify-content-center">
         <br />
         <br />
@@ -60,7 +65,7 @@ export default function Login() {
                 }
                 type="text"
                 onChange={(e) => setUserName(e.target.value)}
-              />
+              placeholder="Username"/>
             </label>
             <br />
             {username?.length <= 0 ? (
@@ -71,7 +76,7 @@ export default function Login() {
           <div className="form-group">
             <label>
               <p>Password</p>
-              <input
+              <input placeholder="Password "
                 className={
                   password?.length <= 0
                     ? "form-control is-invalid"
